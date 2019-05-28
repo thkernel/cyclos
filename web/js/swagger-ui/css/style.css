@@ -1,0 +1,72 @@
+.wrapper {
+	font-family: Droid Sans, sans-serif;
+	max-width: 90%;
+	margin: 20px auto 0px;
+    line-height: 1;
+}
+.preface {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1em;
+    font-size: 11pt;
+}
+.preface p:first-of-type {
+	margin-top: 1em;
+}
+.preface p {
+	margin-bottom: 1em;
+	text-align: justify;
+	text-indent: 2em;
+}
+.preface .header h1 {
+	font-weight: bold;
+	font-size: 160%;
+}
+.preface .input {
+	display: inline-block;
+}
+.preface #auth-select .input {
+	margin-right: 1em;
+}
+.preface input[type=radio] {
+	margin-left: 0;
+}
+.preface #auth {
+	display: table-row;
+}
+.preface #auth-select {
+    padding-top: 0.5em;
+    padding-bottom: 0.3em;
+}
+.preface #auth > * {
+    display: table-cell;
+}
+.preface #auth-fields {
+	padding-left: 20px;
+}
+.swagger-section .info {
+	display: none;
+}
+.swagger-section .swagger-ui-wrap {
+  line-height: 1;
+  font-family: "Droid Sans", sans-serif;
+  max-width: inherit;
+  margin-left: auto;
+  margin-right: auto;
+  /* JSONEditor specific styling */
+}
+
+.swagger-section .tag-description {
+	font-size: 11pt;
+    display: block;
+    clear: both;
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+.swagger-section .tag-options {
+	margin-right: 0 !important;
+}
+
+.swagger-section h2 {
+	padding-top: 16px !important;
+}

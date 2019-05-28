@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0"
+	metadata-complete="true">
+
+	<display-name>Cyclos 4</display-name>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+            classpath:spring/bootstrap.xml,
+        	classpath:spring/services.xml,
+        	classpath:spring/webApplicationContext.xml
+        </param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Filters -->
+    <filter>
+        <filter-name>requestContextFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+    <filter-mapping>
+        <filter-name>requestContextFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+        <dispatcher>ASYNC</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>requestDataFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+    <filter-mapping>
+        <filter-name>requestDataFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
+	<filter>
+		<filter-name>corsFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <async-supported>true</async-supported>		
+	</filter>
+	<filter-mapping>
+		<filter-name>corsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+	   
+    <filter>
+        <filter-name>gwtCacheFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>gwtCacheFilter</filter-name>
+        <url-pattern>/cyclos.gwt/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>        
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>staticFilesGZipFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>staticFilesGZipFilter</filter-name>
+        <url-pattern>/js/*</url-pattern>
+        <url-pattern>/fonts/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>        
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+	<!-- Forward servlets -->
+
+    <servlet>
+        <servlet-name>redirect</servlet-name>
+        <servlet-class>org.cyclos.server.content.ForwardServlet</servlet-class>
+        <init-param>
+            <param-name>uri</param-name>
+            <param-value>/content/redirectLink</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>redirect</servlet-name>
+        <url-pattern>/redirect/*</url-pattern>        
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>mobile-redirect</servlet-name>
+        <servlet-class>org.cyclos.server.content.ForwardServlet</servlet-class>
+        <init-param>
+            <param-name>uri</param-name>
+            <param-value>/content/redirectLink/mobile</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mobile-redirect</servlet-name>
+        <url-pattern>/mobile-redirect/*</url-pattern>        
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>robots</servlet-name>
+        <servlet-class>org.cyclos.server.content.ForwardServlet</servlet-class>
+        <init-param>
+            <param-name>uri</param-name>
+            <param-value>/content/sitemaps/robots</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>robots</servlet-name>
+        <url-pattern>/robots.txt</url-pattern>        
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>sitemap</servlet-name>
+        <servlet-class>org.cyclos.server.content.ForwardServlet</servlet-class>
+        <init-param>
+            <param-name>uri</param-name>
+            <param-value>/content/sitemaps/sitemap</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sitemap</servlet-name>
+        <url-pattern>/sitemap.xml</url-pattern>        
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>sitemap-index</servlet-name>
+        <servlet-class>org.cyclos.server.content.ForwardServlet</servlet-class>
+        <init-param>
+            <param-name>uri</param-name>
+            <param-value>/content/sitemaps/sitemap-index</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sitemap-index</servlet-name>
+        <url-pattern>/sitemap-index.xml</url-pattern>        
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>network-info</servlet-name>
+        <servlet-class>org.cyclos.server.content.ForwardServlet</servlet-class>
+        <init-param>
+            <param-name>uri</param-name>
+            <param-value>/content/sitemaps/network-information-id.html</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>network-info</servlet-name>
+        <url-pattern>/network-information-id.html</url-pattern>       
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>sitemap-style</servlet-name>
+        <servlet-class>org.cyclos.server.content.ForwardServlet</servlet-class>
+        <init-param>
+            <param-name>uri</param-name>
+            <param-value>/content/sitemaps/style</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sitemap-style</servlet-name>
+        <url-pattern>/sitemap.xstl</url-pattern>       
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>activate-access-client</servlet-name>
+        <servlet-class>org.cyclos.server.content.ForwardServlet</servlet-class>
+        <init-param>
+            <param-name>uri</param-name>
+            <param-value>/content/accessClients/activate</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>activate-access-client</servlet-name>
+        <url-pattern>/activate-access-client</url-pattern>        
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>external-redirect-callback</servlet-name>
+        <servlet-class>org.cyclos.server.content.ForwardServlet</servlet-class>
+        <init-param>
+            <param-name>uri</param-name>
+            <param-value>/content/customOperations/callback</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>external-redirect-callback</servlet-name>
+        <url-pattern>/external-redirect-callback/*</url-pattern>        
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>custom-web-service-run</servlet-name>
+        <servlet-class>org.cyclos.server.content.ForwardServlet</servlet-class>
+        <init-param>
+            <param-name>uri</param-name>
+            <param-value>/content/customWebServices/run</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>custom-web-service-run</servlet-name>
+        <url-pattern>/run/*</url-pattern>        
+    </servlet-mapping>
+
+	<!-- Spring servlets -->
+
+	<servlet>
+		<servlet-name>content</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring/webApplicationContext-content.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>content</servlet-name>
+		<url-pattern>/content/*</url-pattern>        
+	</servlet-mapping>
+
+    <servlet>
+        <servlet-name>web-rpc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/webApplicationContext-web-rpc.xml</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>web-rpc</servlet-name>
+        <url-pattern>/web-rpc/*</url-pattern>        
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>java-rpc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/webApplicationContext-java-rpc.xml</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>java-rpc</servlet-name>
+        <url-pattern>/java-rpc/*</url-pattern>        
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>rest</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/webApplicationContext-rest.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>throwExceptionIfNoHandlerFound</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>rest</servlet-name>
+        <url-pattern>/api/*</url-pattern>        
+        <url-pattern>/api</url-pattern>        
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>sms</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/webApplicationContext-sms.xml</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sms</servlet-name>
+        <url-pattern>/sms/*</url-pattern>        
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>push-notifications</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/webApplicationContext-push-notifications.xml</param-value>
+        </init-param>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>push-notifications</servlet-name>
+        <url-pattern>/push-notifications/*</url-pattern>
+        <url-pattern>/push-notifications</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>pay</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/webApplicationContext-pay.xml</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>pay</servlet-name>
+        <url-pattern>/pay/*</url-pattern>        
+        <url-pattern>/pay</url-pattern>
+    </servlet-mapping>
+    
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<exception-type>org.cyclos.model.access.PermissionDeniedException</exception-type>
+		<location>/content/error?key=permissionDenied</location>
+	</error-page>
+    <error-page>
+        <exception-type>org.cyclos.model.EntityNotFoundException</exception-type>
+        <location>/content/error?key=notFound</location>
+    </error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/content/error?key=notFound</location>
+	</error-page>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/content/error?key=badRequest</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/content/error?key=general</location>
+	</error-page>
+</web-app>

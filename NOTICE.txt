@@ -1,0 +1,68 @@
+Cyclos uses the following libraries, released under open source licenses:
+
+Library                                                        | License
+-------------------------------------------------------------------------------
+Swagger                                                        | Apache 2
+ANTLR - http://www.antlr.org                                   | New BSD
+Apache batik - http://xmlgraphics.apache.org/batik/            | Apache 2
+Apache commons - http://commons.apache.org/                    | Apache 2
+Apache HttpComponents - http://hc.apache.org/                  | Apache 2
+c3p0 - http://www.mchange.com/projects/c3p0/                   | LGPL 2.1
+EclipseLink - http://www.eclipse.org/eclipselink/              | EPL
+Guava - https://code.google.com/p/guava-libraries/             | Apache 2
+GWT-Maps-V3-Api - [1]                                          | Apache 2
+Hazelcast - http://www.hazelcast.com/                          | Apache 2
+Hibernate validator - http://hibernate.org/validator/          | Apache 2
+Jackson - http://wiki.fasterxml.com/JacksonDownload            | Apache 2
+Jasper reports - [2]                                           | LGPL 2.1
+Kaptcha - https://code.google.com/p/kaptcha/                   | Apache 2
+libphonenumber - https://code.google.com/p/libphonenumber/     | Apache 2
+Log4j - http://logging.apache.org/log4j                        | Apache 2
+OWASP HTML sanitizer - [3]                                     | New BSD
+pngtastic - https://code.google.com/p/pngtastic/               | MIT
+PostgreSQL JDBC driver - http://jdbc.postgresql.org            | New BSD
+Querydsl - http://www.querydsl.com/                            | Apache 2
+Rhino - https://github.com/mozilla/rhino                       | MPL 2
+SLF4J - http://www.slf4j.org/                                  | MIT
+Spring framework - http://projects.spring.io/spring-framework/ | Apache 2
+JavaScripTools - http://javascriptools.sourceforge.org         | LGPL 2.1
+CSS User Agent - http://cssuseragent.org                       | MIT
+Groovy - http://groovy.codehaus.org                            | Apache 2
+Jython - http://www.jython.org                                 | Custom [4]
+Base64 JS - http://www.webtoolkit.info/javascript-base64.html  | Custom [5]
+he (HTML Entities) - https://github.com/mathiasbynens/he       | MIT
+EventSource polyfill - https://github.com/Yaffle/EventSource   | MIT
+
+[1]: https://github.com/branflake2267/GWT-Maps-V3-Api
+[2]: http://community.jaspersoft.com/project/jasperreports-library
+[3]: https://www.owasp.org/index.php/OWASP_Java_HTML_Sanitizer_Project
+[4]: http://www.jython.org/license.html
+[5]: http://www.webtoolkit.info/license1/index.html
+
+You can get the license contents online:
+
+License            | Reference
+-------------------------------------------------------------------------------
+Apache 2           | http://www.apache.org/licenses/LICENSE-2.0
+New (3-clause) BSD | http://opensource.org/licenses/BSD-3-Clause
+EPL                | http://www.eclipse.org/legal/epl-v10.html
+LGPL 2.1           | http://www.gnu.org/licenses/lgpl-2.1.html
+MIT                | http://opensource.org/licenses/MIT
+MPL 2              | http://www.mozilla.org/MPL/
+
+
+Icons / images licenses
+-------------------------------------------------------------------------------
+All icons shown on the website and cyclos application are copyright and owned
+by Cyclos, with the exception of:
+
+* The Silk icons from fam fam fam, we are very thankful making these
+  great icons publicly available 
+  (CC Attribution 3.0, http://www.famfamfam.com/lab/icons/silk/).
+* Zoom-3 icon (Nuvola, http://www.icon-king.com/projects/nuvola/, LGPL-2.1).
+* Money icon (Aha-Soft, http://www.aha-soft.com/, CC Attribution 3.0).
+* User icon (Aha-Soft, http://www.aha-soft.com/, purchased).
+* Knode icon (YellowIcon, http://www.yellowicon.com/, GNU/GPL).
+* View-pim-contacts icon 
+  (Oxygen, http://www.oxygen-icons.org/, CC-BY-SA 3.0 or LGPL).
+* People icon (Aha-Soft, http://www.aha-soft.com/, purchased). 

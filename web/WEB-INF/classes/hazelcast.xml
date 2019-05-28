@@ -1,0 +1,56 @@
+<!--
+    This file is used when cyclos.clusterHandler is set to hazelcast in cyclos.properties.  
+ -->
+<hazelcast xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-config-3.6.xsd"
+           xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <!-- 
+        Defines the group membership is the name and password.
+        If there are multiple clusters in the local network, 
+        distinct names and passwords should be used.
+     -->
+    <group>
+        <name>cyclos4</name>
+        <password>cyclos4-password</password>
+    </group>
+    
+    <network>
+        <port auto-increment="true">5701</port>
+        <join>
+            <!-- Multicast communication -->
+            <multicast enabled="true">
+                <multicast-group>224.2.2.3</multicast-group>
+                <multicast-port>54327</multicast-port>
+            </multicast>
+            
+            <!-- Full TCP/IP communication -->
+            <!-- 
+            <tcp-ip enabled="true">
+                <member>machine1</member>
+                <member>machine2</member>
+                <member>machine3:5702</member>
+            </tcp-ip>
+             -->
+        </join>
+    </network>
+    
+    <!-- 
+        Both initializations and tasks maps need to never expire, 
+        and have some backups, as they need to be kept alive for the
+        entire cluster lifecycle
+    -->
+    <map name="cyclos.map.initializations">
+        <backup-count>3</backup-count>
+    </map>
+    <map name="cyclos.map.tasks">
+        <backup-count>3</backup-count>
+    </map>
+    
+    <!-- It is advised that the session timeout map has a backup -->
+    <map name="cyclos.map.sessionTimeout">
+        <backup-count>1</backup-count>
+        <read-backup-data>true</read-backup-data>
+    </map>
+        
+</hazelcast>
